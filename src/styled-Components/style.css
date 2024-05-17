@@ -1,0 +1,42 @@
+body{
+  padding: 0;
+  margin: 0;
+  background-color:#222542 ;
+  /*background-image:url('../assets/fondo.jpeg')*/
+}
+
+
+.containerLogInput {
+  display: flex;
+  justify-content: center;
+}
+
+.contenedorDeCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  padding-top: 50px;
+  width: 100%;
+  gap: 5px;
+}
+
+/*Tamaño para distintos dispositivos*/
+@media screen and (min-width: 769px){
+
+  .contenedorDeCards {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    padding-top: 40px;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+
+  .contenedorCardHeader {
+    order: 1;
+  }
+  .pronosticoExtendido {
+    order: 2;
+  }
+  .contenedorDeCards{
+    order: 3;
+  }
+}
