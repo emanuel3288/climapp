@@ -11,13 +11,12 @@ const WeatherForecast = ({ city }) => {
   const [forecastData, setForecastData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated();
-  const [geolocalización,setGeolocalizacion]=useState(true);
+  const [geocoding,setGeocoding]=useState(0)
 
+  const cambiarGeo=useCallback(()=>{
+    setGeocoding(geocoding+1);
+  });
 
-
-  const cambiarGeo=()=>{
-    setGeolocalizacion(!geolocalización)
-  }
 
   // Función para convertir Kelvin a Celsius
   const kelvinToCelsius = (kelvin) => {
@@ -31,16 +30,16 @@ const WeatherForecast = ({ city }) => {
   };
 
   useEffect(() => {
-    const fetchWeatherData = async () => {
+    const fetchWeatherData = async () => {  
       try {
-            const apiKey = '6177460b81e81f4494a1822af32ebc71';
+            const apiKey = process.env.REACT_APP_API;  //aquí está la string que contiene la apikey
             let apiUrl = '';
 
-            if (!geolocalización && isGeolocationAvailable && isGeolocationEnabled && coords) {
+            if (geocoding===0 && isGeolocationAvailable && isGeolocationEnabled && coords) {
                 apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=${apiKey}`;
-                console.log("Estoy con geo");
+                console.log("Estoy con geo"+geocoding);                
                 cambiarGeo();
-            } else if (geolocalización) {
+            } else if (geocoding!==0 && city!=='') {
                 apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
                 console.log("Estoy sin geo");
             } else {
@@ -57,7 +56,7 @@ const WeatherForecast = ({ city }) => {
     };
 
     fetchWeatherData();
-}, [city, coords, isGeolocationAvailable, isGeolocationEnabled,cambiarGeo,geolocalización]);
+}, [city, coords, isGeolocationAvailable, isGeolocationEnabled,geocoding]);
 
   if (!isGeolocationAvailable || !isGeolocationEnabled) {
     return <div>Geolocation is not available or enabled.</div>;
@@ -104,6 +103,7 @@ const WeatherForecast = ({ city }) => {
                   nombreDeldia={obtenerNombreDiaSemana(new Date(date).getDay())}
                   diaNumero={new Date(dailyForecasts[date][0].dt_txt).getDate()}
                   url={<WeatherDescriptionForecast weatherCode={dailyForecasts[date][0].weather[0].id} />}
+                  descripcion={dailyForecasts[date][0].weather[0].description}
                   probabilidadLluvia={porcentajeDeLluvia!==0?porcentajeDeLluvia+ "% precip.":""}
                   tempMin={calculateMinMaxTemperatures(dailyForecasts[date]).minTemp.toFixed(0)}
                   tempMax={calculateMinMaxTemperatures(dailyForecasts[date]).maxTemp.toFixed(0)}

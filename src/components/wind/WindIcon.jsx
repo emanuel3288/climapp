@@ -84,7 +84,6 @@ const WindIcon = ({ direccion, velocidad }) => {
         style={{ transform: `rotate(${direccion}deg)`, width: '60px', height: '60px' }} // Aplicar el tamaño fijo
       />      
       <p>{windRange(velocidad)}</p>
-      {console.log("intensidad del viento: "+velocidad)}
     </div>
   );
 };
