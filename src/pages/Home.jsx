@@ -9,8 +9,6 @@ import FormMessage from "../components/forms/FormMessage";
 
 const Home = () => {
   const [currentCity, setCurrentCity] = useState("Buenos aires"); // Establece el valor predeterminado como "New York"
-  const apiKey = process.env.REACT_APP_API;
-  console.log(apiKey+" HOLA"); // Imprimir el va
 
   // Función para manejar el envío del nombre de la ciudad desde el formulario
   const handleCitySubmit = (cityName) => {

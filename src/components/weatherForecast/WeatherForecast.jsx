@@ -36,14 +36,14 @@ const WeatherForecast = ({ city }) => {
             let apiUrl = '';
 
             if (geocoding===0 && isGeolocationAvailable && isGeolocationEnabled && coords) {
-                apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=${apiKey}`;
+                apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=${apiKey}`;
                 console.log("Estoy con geo"+geocoding);                
                 cambiarGeo();
             } else if (geocoding!==0 && city!=='') {
-                apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+                apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
                 console.log("Estoy sin geo");
             } else {
-                apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=Buenos%20Aires&appid=${apiKey}`;
+                apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Buenos%20Aires&appid=${apiKey}`;
                 console.log("Ciudad por defecto");
             }
 
