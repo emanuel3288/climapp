@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-//Loader
 .pl {
   display: block;
   width: 9.375em;
@@ -69,7 +68,6 @@
   animation-delay: -0.25s;
 }
 
-/* Animations */
 @keyframes arrows42 {
   from {
     transform: rotate(45deg);
