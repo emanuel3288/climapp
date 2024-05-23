@@ -9,7 +9,7 @@ import {ContenedorCardAboutUs,ContenedorTituloAbout
 const CardAboutUs=({urlLinkedyn,urlGithub,urlWhatsapp,imageCard,nombre,apellido})=>{
   return (
         <ContenedorCardAboutUs>
-            <img src={imageCard} alt="Emanuel" className="w-18 h-18 mb-3 rounded-full md:w-52 md:h-52"/>
+            <img src={imageCard} alt="Emanuel" className=" mb-3 rounded-full md:w-48 md:h-48"/>
             <ContenedorTituloAbout>{nombre+" "+apellido}</ContenedorTituloAbout>
             <ContenedorSubtituloAbout>Fullstack developer</ContenedorSubtituloAbout>
             <div className="hidden md:flex mt-4 space-x-10 pt-10 md:mt-6">

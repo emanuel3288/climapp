@@ -6,7 +6,7 @@ import CardAboutUs from "../../components/card/CardAboutUs";
 const AboutUs = () => {
     return (
         <div className="bg-gray-900">
-            <h2 className="flex pl-2 my-5 font-black text-blue-500 " id="About">About us</h2>
+            <h2 className="hidden md:flex pl-2 my-5 font-black text-blue-500 " id="About">About us</h2>
             <hr className="md:border-4 border-gray-400 justify-star"></hr>
             <div id="aboutUs" className="flex pt-1 px-2 bg-gray-800 py-10">
                 <Slogan/>

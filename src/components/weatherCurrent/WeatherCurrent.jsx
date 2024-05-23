@@ -28,7 +28,6 @@ const WeatherCurrent = ({ city }) => {
           cambiarGeo2();
         }else if (geocoding>=1 && city!=='') {
           const apiKey = process.env.REACT_APP_API;
-
           const geocodingResponse = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityToFetch}&limit=1&appid=${apiKey}`);
           const { lat, lon } = geocodingResponse.data[0];
           const currentWeatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
@@ -77,7 +76,7 @@ const WeatherCurrent = ({ city }) => {
           <h4>Presión: {weatherData.main.pressure} hPa</h4>
         </LineaHorizontalGrisOscuro>
         <LineaHorizontalGrisClaro>
-          <h4>Viento: {weatherData.wind.speed.toFixed(0)} km/h</h4>
+          <h4>Viento: {weatherData.wind.speed.toFixed(0)>0 ? weatherData.wind.speed.toFixed(0)+" km/h": "calmo"} </h4>
         </LineaHorizontalGrisClaro>
         <LineaHorizontalGrisOscuro>
           <h4>Humedad: {weatherData.main.humidity.toFixed(0)}%</h4>
