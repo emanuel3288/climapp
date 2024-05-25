@@ -8,7 +8,6 @@ import Loader from '../loader/Loader';
 const WeatherCurrent = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
   const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated();
-  
   const [geocoding,setGeocoding]=useState(0)
 
   const cambiarGeo2=useCallback(()=>{
@@ -20,13 +19,12 @@ const WeatherCurrent = ({ city }) => {
     const fetchData = async () => {
       try {
         let cityToFetch = city || 'Buenos Aires'; // Utiliza la ciudad proporcionada o Buenos Aires como ciudad predeterminada
-
+        const apiKey = process.env.REACT_APP_API;
         if (geocoding===0 && isGeolocationAvailable && isGeolocationEnabled && coords) {
-          const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=6177460b81e81f4494a1822af32ebc71&units=metric`);
+          const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=${apiKey}&units=metric`);
           setWeatherData(response.data);
           cambiarGeo2();
         }else if (geocoding>=1 && city!=='') {
-          const apiKey = process.env.REACT_APP_API;
           const geocodingResponse = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityToFetch}&limit=1&appid=${apiKey}`);
           const { lat, lon } = geocodingResponse.data[0];
           const currentWeatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);

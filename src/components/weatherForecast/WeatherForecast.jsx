@@ -10,7 +10,7 @@ import { useGeolocated } from 'react-geolocated';
 const WeatherForecast = ({ city }) => {
   const [forecastData, setForecastData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated();
+  const {coords,isGeolocationAvailable,isGeolocationEnabled} = useGeolocated();
   const [geocoding,setGeocoding]=useState(0)
 
   const cambiarGeo=useCallback(()=>{
