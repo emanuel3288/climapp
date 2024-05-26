@@ -13,8 +13,6 @@ const WeatherCurrent = ({ city }) => {
   const cambiarGeo2=useCallback(()=>{
     setGeocoding(geocoding+1);
   });
-
- 
   useEffect(() => {
     const fetchData = async () => {
       try {

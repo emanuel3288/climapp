@@ -58,7 +58,6 @@ function WeatherDescription({ weatherCode, isCurrent }) {
     };
 
     const { white, black } = images[weatherCode] || {};
-    console.log(images[weatherCode] || {});
     const weatherImage = isCurrent ? white : black;
     const weatherDescription = descriptions[weatherCode] || "Descripción no encontrada";
 

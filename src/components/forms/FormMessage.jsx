@@ -1,6 +1,6 @@
 import React,{ useRef } from "react";
 import { ContenedorDeFormulario,ContenedorFirstAndLastName,ContenedorTextarea,LabelTextarea,InputTextarea,Boton} from "../../styled-Components/Components"
-import LabelAndInput from "./LabelAndInput";
+import LabelAndInput from "./LabelInputFormMessage";
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2'
  

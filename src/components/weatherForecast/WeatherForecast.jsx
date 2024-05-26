@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Card from "../card/Card";
+import Card from "../cards/CardWeather";
 import WindIcon from "../wind/WindIcon";
 import { ContainerForecast, ContenedorDeFondo } from "../../styled-Components/Components";
 import Loader from "../loader/Loader";
@@ -105,7 +105,7 @@ const WeatherForecast = ({ city }) => {
                   probabilidadLluvia={porcentajeDeLluvia!==0?porcentajeDeLluvia+ "% precip.":""}
                   tempMin={calculateMinMaxTemperatures(dailyForecasts[date]).minTemp.toFixed(0)}
                   tempMax={calculateMinMaxTemperatures(dailyForecasts[date]).maxTemp.toFixed(0)}
-                  iconoViento={<WindIcon direccion={dailyForecasts[date][0].wind.deg.toFixed(0)} velocidad={dailyForecasts[date][0].wind.gust.toFixed(0)} />}
+                  iconoViento={<WindIcon direccion={dailyForecasts[date][0].wind.deg.toFixed(0)} velocidad={dailyForecasts[date][0].wind.speed.toFixed(0)} rafagas={dailyForecasts[date][0].wind.gust.toFixed(0)}/>}
                 />
               </div>
             );

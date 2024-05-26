@@ -1,7 +1,7 @@
 import React from "react";
 import { ContenedorCard,DatosMeteorologicos} from "../../styled-Components/Components";
 
-const Card = ({ nombreDeldia, diaNumero, probabilidadLluvia, url, tempMax, tempMin, velViento, iconoViento,descripcion }) => {
+const Card = ({ nombreDeldia, diaNumero, probabilidadLluvia, url, tempMax, tempMin, iconoViento,descripcion }) => {
     return (
         <ContenedorCard>
             <div className="pb-3">
@@ -26,9 +26,6 @@ const Card = ({ nombreDeldia, diaNumero, probabilidadLluvia, url, tempMax, tempM
                 <div className="flex flex-col justify-center"> {/* Utilizamos justify-center para centrar horizontalmente y items-center para centrar verticalmente */}
                     <div>
                         <h5>{iconoViento}</h5>
-                    </div>
-                    <div>
-                        <p>{velViento}</p>
                     </div>
                     <div>
                         <p className="text-blue-400 underline">{probabilidadLluvia}</p>

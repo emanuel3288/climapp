@@ -12,13 +12,13 @@ import strongGale         from "../../assets/iconos/Wind/strongGale.png";
 import wholeGale          from "../../assets/iconos/Wind/wholeGale.png";
 import storm              from "../../assets/iconos/Wind/storm.png"
 
-const WindIcon = ({ direccion, velocidad }) => {
+const WindIcon = ({ direccion, velocidad,rafagas }) => {
   // Función para obtener el nombre del ícono según la dirección del viento
 
   // Función para obtener la intensidad del viento
   const getWindIntensity = (velocidad) => {
     // Definir rangos de velocidad y asignar la intensidad correspondiente
-    if (velocidad < 2) {
+    if (velocidad <= 2) {
       return calm;
     } else if (velocidad >= 3 && velocidad < 7) {
       return lightAir;
@@ -46,7 +46,7 @@ const WindIcon = ({ direccion, velocidad }) => {
   };
 
   const windRange = (velocidad) => {
-    if (velocidad < 2) {
+    if (velocidad <= 2) {
       return "calma";
     } else if (velocidad >= 3 && velocidad < 7) {
       return "3 - 7 km/h";
@@ -80,10 +80,9 @@ const WindIcon = ({ direccion, velocidad }) => {
       <img 
         src={getWindIntensity(velocidad)} 
         alt="Wind Icon"
-        
         style={{ transform: `rotate(${direccion}deg)`, width: '60px', height: '60px' }} // Aplicar el tamaño fijo
       />      
-      <p>{windRange(velocidad)}</p>
+      <p>{windRange(rafagas)}</p>
     </div>
   );
 };

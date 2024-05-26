@@ -1,7 +1,7 @@
 import React from "react";
 import ema from "../../assets/ema.jpg";
 import Slogan from "../../components/aboutUs/Slogan";
-import CardAboutUs from "../../components/card/CardAboutUs";
+import CardAboutUs from "../../components/cards/CardAboutUs";
 
 const AboutUs = () => {
     return (
