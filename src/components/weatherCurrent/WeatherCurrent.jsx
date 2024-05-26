@@ -1,14 +1,14 @@
 import React, { useState, useEffect,useCallback} from 'react';
 import axios from 'axios';
-import WeatherDescription from './WeatherDescriptionPresente';
 import { ContenedorWeatherCurrent, CityNameContainer, CityName, City, LineaHorizontalGrisClaro, LineaHorizontalGrisOscuro,  ContenedorTiempoActual } from '../../styled-Components/Components';
 import { useGeolocated } from 'react-geolocated';
 import Loader from '../loader/Loader';
+import WeatherImage from '../WeatherImage';
 
 const WeatherCurrent = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
   const { coords, isGeolocationAvailable, isGeolocationEnabled } = useGeolocated();
-  const [geocoding,setGeocoding]=useState(0)
+  const [geocoding,setGeocoding]=useState(0);
 
   const cambiarGeo2=useCallback(()=>{
     setGeocoding(geocoding+1);
@@ -61,7 +61,8 @@ const WeatherCurrent = ({ city }) => {
     <div className='h-5 bg-[#140905] text-white w-full mb-[10px]'/>
       <ContenedorTiempoActual>
         <h2>Estado actual</h2>
-        <WeatherDescription weatherCode={weatherData.weather[0].id} />
+        <WeatherImage weatherCode={weatherData.weather[0].id} isCurrent={true} />
+
         <LineaHorizontalGrisClaro>
           <h2>{weatherData.main.temp.toFixed(1)}°C</h2>
         </LineaHorizontalGrisClaro>

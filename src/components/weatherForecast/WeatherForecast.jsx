@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Card from "../card/Card";
-import WeatherDescriptionForecast from "./WeatherDescriptionForecast";
 import WindIcon from "../wind/WindIcon";
 import { ContainerForecast, ContenedorDeFondo } from "../../styled-Components/Components";
 import Loader from "../loader/Loader";
 import { useGeolocated } from 'react-geolocated';
+import WeatherImage from '../WeatherImage';
+
 
 const WeatherForecast = ({ city }) => {
   const [forecastData, setForecastData] = useState(null);
@@ -99,7 +100,7 @@ const WeatherForecast = ({ city }) => {
                 <Card
                   nombreDeldia={obtenerNombreDiaSemana(new Date(date).getDay())}
                   diaNumero={new Date(dailyForecasts[date][0].dt_txt).getDate()}
-                  url={<WeatherDescriptionForecast weatherCode={dailyForecasts[date][0].weather[0].id} />}
+                  url={<WeatherImage weatherCode={dailyForecasts[date][0].weather[0].id} isCurrent={false}/>}
                   descripcion={dailyForecasts[date][0].weather[0].description}
                   probabilidadLluvia={porcentajeDeLluvia!==0?porcentajeDeLluvia+ "% precip.":""}
                   tempMin={calculateMinMaxTemperatures(dailyForecasts[date]).minTemp.toFixed(0)}
